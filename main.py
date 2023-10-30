@@ -35,7 +35,6 @@ def data_calculate(sub_result, sub_credit): #Calculates total points for a subje
         Total_points_array.append(Total_points)
         Total_credit_array.append(sub_credit)
 
-
 def input_data(student_index_no, GPA): #input student_index_no and GPA to a dictionary
     data_dict[student_index_no] = GPA
     print("Data inserted to dictionary.")
