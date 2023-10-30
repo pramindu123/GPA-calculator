@@ -4,7 +4,7 @@ Total_points_array = []
 Total_credit_array = []
 data_dict = {}
 
-def data_calculate(sub_result, sub_credit):
+def data_calculate(sub_result, sub_credit): #Calculates total points for a subject and appends it to a list
         sub_result = sub_result.upper()
         if sub_result=="A+":
             Total_points=sub_credit*4
@@ -31,25 +31,15 @@ def data_calculate(sub_result, sub_credit):
         elif sub_result=="E":
             Total_points=sub_credit*0
         else:
-            Total_points = 0  # Default for an unknown grade
+            Total_points = 0  
         Total_points_array.append(Total_points)
         Total_credit_array.append(sub_credit)
 
-def class_predict(GPA):
-    if GPA >= 3.7:
-        return "First class"
-    elif GPA >= 3.3:
-        return "Second class upper"
-    elif GPA >= 3.0:
-        return "Second class lower"
-    else:
-        return "General class"
-
-def input_data(student_index_no, GPA):
+def input_data(student_index_no, GPA): #input student_index_no and GPA to a dictionary
     data_dict[student_index_no] = GPA
-    print("Data added to the dictionary.")
+    print("Data inserted to dictionary.")
 
-def search_data():
+def search_data(): #search GPA relevant to the inserted index_no from a dictionary
     key = int(input("Enter the student index number to search for: "))
     if key in data_dict:
         print(f"Student Index No '{key}' has a GPA of {data_dict[key]}")
@@ -62,7 +52,7 @@ while student_index_no > 0:
         student_index_no = int(input("Enter your index number: "))
         No_of_subjects = int(input("Enter the number of subjects: "))
         
-        for _ in range(No_of_subjects):
+        while No_of_subjects>loop_increment:
             loop_increment += 1
             sub_name = input(f"Enter subject {loop_increment} name: ")
             sub_result = input(f"Enter subject {loop_increment} result (e.g., A+): ")
@@ -70,13 +60,12 @@ while student_index_no > 0:
             data_calculate(sub_result, sub_credit)
 
         GPA = sum(Total_points_array) / sum(Total_credit_array)
-        Class_predict = class_predict(GPA)
         print(f"{student_index_no} - GPA: {GPA}")
         input_data(student_index_no, GPA)
     else:
         break
 
-while True:
+while True: #GPA searching loop
     GPA_Decision_search = input("Do you want to find a GPA (y/n): ").lower()
     if GPA_Decision_search == "y":
         search_data()
