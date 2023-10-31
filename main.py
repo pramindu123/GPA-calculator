@@ -1,5 +1,4 @@
 student_index_no = 1
-loop_increment = 0
 Total_points_array = []
 Total_credit_array = []
 data_dict = {}
@@ -47,13 +46,14 @@ def search_data(): #search GPA relevant to the inserted index_no from a dictiona
         print(f"Student Index No '{key}' not found in the dictionary.")
 
 while student_index_no > 0:
+    loop_increment = 0
     GPA_Decision_select = input("Do you want to calculate GPA (y/n) ").lower()
     if GPA_Decision_select == "y":
         student_index_no = int(input("Enter your index number: "))
         No_of_subjects = int(input("Enter the number of subjects: "))
         
-        while No_of_subjects>loop_increment:
-            loop_increment += 1
+        for _ in range(No_of_subjects):
+            loop_increment += 1 #loop_increment=loop_increment + 1
             sub_name = input(f"Enter subject {loop_increment} name: ")
             sub_result = input(f"Enter subject {loop_increment} result (e.g., A+): ")
             sub_credit = float(input(f"Enter subject {loop_increment} credit: "))
